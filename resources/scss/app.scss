@@ -1,27 +1,51 @@
 @import "~bootstrap/scss/bootstrap";
 
 .main-bg {
-    background-color: $purple-800;
+   background-color: $purple-800;
 }
 
 .wrapper {
-    padding: 1rem;
+   padding: 1rem;
 
-    border: 3px solid $teal;
-    border-radius: 1rem;
+   border: 3px solid $teal;
+   border-radius: 1rem;
 
-    background-color: $teal;
+   background-color: $teal;
 
-    box-shadow: 0 0 50px 8px $teal-600;
+   box-shadow: 0 0 60px 8px $teal-600;
 }
 
 .main-title {
-    color: $teal;
+   color: $teal;
 }
 
 .card {
-    transition: translate 0.1s linear;
-    &:hover {
-        translate: -3px -5px;
-    }
+
+   position: relative;
+   overflow: hidden;
+   transition: translate 0.1s linear;
+
+   .card-body {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+
+   .details {
+      visibility: hidden;
+      opacity: 0.95;
+      width: 100%;
+   }
+
+   &:hover {
+      translate: -3px -5px;
+
+      .details {
+         visibility: visible;
+      }
+   }
 }

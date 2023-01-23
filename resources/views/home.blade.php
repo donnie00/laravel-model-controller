@@ -5,15 +5,19 @@
 
    <div class="container">
       <div class="wrapper">
-         <div class="row">
+         <div class="row justify-content-center">
             @foreach ($movies as $movie)
                <div class="col-sm-4 mb-3">
                   <div class="card text-bg-dark h-100">
-                     <div class="card-body">
-                        <h5 class="card-title">{{ $movie->title }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ $movie->original_title }}</h6>
+                     <div class="card-body text-center">
+                        <div class="title-wrapper">
+                           <h5 class="card-title">{{ $movie->title }}</h5>
+                           @if ($movie->title !== $movie->original_title)
+                              <h6 class="card-subtitle mb-2 text-muted">{{ $movie->original_title }}</h6>
+                           @endif
+                        </div>
                      </div>
-                     <ul class="list-group list-group-flush">
+                     <ul class="list-group list-group-flush details">
                         <li class="list-group-item list-group-item-info">
                            <span class="fw-bold">Nationality:</span>
                            <span class="text-capitalize">
@@ -27,18 +31,19 @@
                               {{ date('d F Y', strtotime($movie->date)) }}
                            </span>
                         </li>
+                        <li class="list-group-item list-group-item-info">
+                           <span class="fw-bold">Vote:</span>
+                           <span @class([
+                               'fw-bold',
+                               'text-success' => $movie->vote >= 9,
+                               'text-warning' => $movie->vote < 9,
+                               'text-danger' => $movie->vote <= 8,
+                           ])>
+                              {{ $movie->vote }}
+                           </span>
+                        </li>
                      </ul>
-                     <div class="card-footer text-center">
-                        <span class="fw-bold">Vote:</span>
-                        <span @class([
-                            'fw-bold',
-                            'text-success' => $movie->vote >= 9,
-                            'text-warning' => $movie->vote < 9,
-                            'text-danger' => $movie->vote <= 8,
-                        ])>
-                           {{ $movie->vote }}
-                        </span>
-                     </div>
+
                   </div>
                </div>
             @endforeach
