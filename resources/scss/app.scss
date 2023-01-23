@@ -1,1 +1,27 @@
-@import '~bootstrap/scss/bootstrap'
+@import "~bootstrap/scss/bootstrap";
+
+.main-bg {
+    background-color: $purple-800;
+}
+
+.wrapper {
+    padding: 1rem;
+
+    border: 3px solid $teal;
+    border-radius: 1rem;
+
+    background-color: $teal;
+
+    box-shadow: 0 0 50px 8px $teal-600;
+}
+
+.main-title {
+    color: $teal;
+}
+
+.card {
+    transition: translate 0.1s linear;
+    &:hover {
+        translate: -3px -5px;
+    }
+}
